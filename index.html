@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net; connect-src 'self'; img-src 'self' data: https:; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; upgrade-insecure-requests; block-all-mixed-content;">
+  <meta name="Referrer-Policy" content="strict-origin-when-cross-origin">
+  <meta http-equiv="X-Content-Type-Options" content="nosniff">
+  <title data-i18n="unsub.meta.title">Newsletter Unsubscribe | GeoStratum</title>
+  <meta name="description" content="Unsubscribe from GeoStratum newsletter in 1 click." data-i18n="unsub.meta.desc">
+  <meta name="robots" content="noindex, follow">
+  <meta name="google" content="notranslate">
+  <link rel="icon" type="image/svg+xml" href="/assets/logo_geostratum.svg">
+  <link rel="shortcut icon" href="/assets/logo_geostratum.svg">
+  <link rel="stylesheet" href="/css/variables.css">
+  <link rel="stylesheet" href="/css/layout.css">
+  <link rel="stylesheet" href="/css/components.css">
+  <link rel="stylesheet" href="/css/pages.css">
+  <link rel="stylesheet" href="/css/themes.css">
+  <link rel="stylesheet" href="/css/unsub.css">
+  <script src="/script.js" defer></script>
+</head>
+
+<body data-page="unsubscribe">
+  <a class="skip-link" href="#main-content">Skip to content</a>
+  <div class="page-shell">
+    <header class="site-header">
+      <div class="header-parent">
+        <a class="brand" href="https://www.geostratum.eu/" aria-label="GeoStratum Home">
+          <img src="/assets/logo_geostratum.svg" alt="GeoStratum logo" class="brand-logo brand-logo-geostratum" width="40" height="40">
+          <span class="brand-name">GeoStratum</span>
+        </a>
+      </div>
+
+      <div class="header-child">
+        <div class="header-actions">
+          <nav class="header-social" aria-label="Social links">
+            <a href="https://www.instagram.com/geostratum_communication/" target="_blank" rel="noopener"
+              class="social-icon-link" aria-label="Instagram" title="Instagram">
+              <img src="/assets/social/instagram.svg" alt="Instagram" class="social-icon-svg" loading="lazy" decoding="async">
+            </a>
+            <a href="https://www.facebook.com/profile.php?id=61587244822437" target="_blank" rel="noopener"
+              class="social-icon-link" aria-label="Facebook" title="Facebook">
+              <img src="/assets/social/facebook.svg" alt="Facebook" class="social-icon-svg" loading="lazy" decoding="async">
+            </a>
+            <a href="https://bsky.app/profile/geostratum.bsky.social" target="_blank" rel="noopener"
+              class="social-icon-link" aria-label="Bluesky" title="Bluesky">
+              <img src="/assets/social/bluesky.svg" alt="Bluesky" class="social-icon-svg" loading="lazy" decoding="async">
+            </a>
+            <a href="https://www.youtube.com/channel/UCj2GVWynWt2H9Up9AP6QEDA" target="_blank" rel="noopener"
+              class="social-icon-link" aria-label="YouTube" title="YouTube">
+              <img src="/assets/social/youtube.svg" alt="YouTube" class="social-icon-svg" loading="lazy" decoding="async">
+            </a>
+            <a href="https://github.com/GeoStratum" target="_blank" rel="noopener"
+              class="social-icon-link" aria-label="GitHub" title="GitHub">
+              <img src="/assets/social/github.svg" alt="GitHub" class="social-icon-svg" loading="lazy" decoding="async">
+            </a>
+          </nav>
+          <div class="language-selector-wrapper">
+            <div id="language-dropdown" class="language-dropdown">
+              <button id="lang-btn" class="lang-btn" aria-haspopup="listbox" aria-expanded="false">
+                <span class="lang-code">EN</span>
+                <span class="chevron">▼</span>
+              </button>
+              <ul id="lang-menu" class="lang-menu" role="listbox" hidden></ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <main id="main-content" class="unsub-main">
+      <section class="panel unsub-panel">
+        <div class="unsub-card">
+          <p class="kicker" data-i18n="unsub.kicker">Newsletter</p>
+          <h1 data-i18n="unsub.title">Unsubscribe from updates</h1>
+          <p class="lead" data-i18n="unsub.body">
+            We are sorry to see you go. Enter your email address below to immediately unsubscribe from all GeoStratum updates and releases.
+          </p>
+
+          <form id="unsub-form" class="unsub-form" novalidate>
+            <div class="unsub-input-group">
+              <input type="email" id="unsub-email" name="email" class="footer-newsletter-input unsub-input" placeholder="geologist@example.com" required autocomplete="email" data-i18n-placeholder="unsub.placeholder">
+              <button type="submit" class="footer-newsletter-btn unsub-btn" data-i18n="unsub.button">Unsubscribe</button>
+            </div>
+            <p class="unsub-legal-note" data-i18n="unsub.note">
+              Per GDPR rules, your email will be permanently removed from all active mailing lists.
+            </p>
+            <div id="unsub-status" class="footer-newsletter-status unsub-status" aria-live="polite"></div>
+          </form>
+
+          <div class="unsub-footer-links">
+            <a href="https://www.geostratum.eu/" class="btn btn-secondary unsub-return-btn" data-i18n="unsub.return">Return to GeoStratum</a>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="footer-grid">
+        <!-- COL 1: MARQUE -->
+        <div class="footer-col footer-col-brand">
+          <img src="/assets/logo_geostratum.svg" alt="GeoStratum logo" class="brand-logo footer-brand" width="40" height="40">
+          <p class="footer-desc">GeoStratum</p>
+          <p class="footer-tagline" data-i18n="home.footer.tagline">Field digitization for geologists.</p>
+        </div>
+
+        <!-- COL 2: CONTACT & ADRESSE -->
+        <div class="footer-col footer-col-contact">
+          <h4 data-i18n="footer.contact.title">Contact & Address</h4>
+          <address class="footer-address">
+            349 rue des Rivières,<br>
+            Varades, 44370,<br>
+            Loireauxence, France<br>
+            <a href="mailto:communication@geostratum.eu" class="footer-mail">communication@geostratum.eu</a>
+          </address>
+        </div>
+
+        <!-- COL 3: NEWSLETTER -->
+        <div class="footer-col footer-col-newsletter">
+          <h4 data-i18n="footer.newsletter.title">Newsletter</h4>
+          <p class="footer-newsletter-desc" data-i18n="footer.newsletter.desc">Stay updated on new features, releases, and software updates.</p>
+          <p class="unsub-page-notice" data-i18n="unsub.footer.notice">Manage your subscription preferences on this page.</p>
+        </div>
+
+        <!-- COL 4: INFORMATIONS LÉGALES -->
+        <div class="footer-col footer-col-legal">
+          <h4 data-i18n="footer.legal.title">Legal Information</h4>
+          <ul class="footer-legal-list">
+            <li><span data-i18n="footer.legal.duns">DUNS</span> : 286385384</li>
+            <li><span data-i18n="footer.legal.siren">SIREN</span> : 999 370 471</li>
+            <li><span data-i18n="footer.legal.director">Director of Publication</span> : Lohan GUYON</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- COMMUNAUTÉ & RÉSEAUX -->
+      <div class="footer-community-section">
+        <h4 data-i18n="footer.social.title">Community & Updates</h4>
+        <div class="footer-social-list">
+          <a href="https://www.instagram.com/geostratum_communication/" target="_blank" rel="noopener"
+            class="footer-social-link" data-social="instagram">
+            <img src="/assets/social/instagram.svg" alt="Instagram" class="footer-social-svg" loading="lazy" decoding="async">
+            <span>Instagram</span>
+          </a>
+          <a href="https://www.facebook.com/profile.php?id=61587244822437" target="_blank" rel="noopener"
+            class="footer-social-link" data-social="facebook">
+            <img src="/assets/social/facebook.svg" alt="Facebook" class="footer-social-svg" loading="lazy" decoding="async">
+            <span>Facebook</span>
+          </a>
+          <a href="https://bsky.app/profile/geostratum.bsky.social" target="_blank" rel="noopener"
+            class="footer-social-link" data-social="bluesky">
+            <img src="/assets/social/bluesky.svg" alt="Bluesky" class="footer-social-svg" loading="lazy" decoding="async">
+            <span>Bluesky</span>
+          </a>
+          <a href="https://www.youtube.com/channel/UCj2GVWynWt2H9Up9AP6QEDA" target="_blank" rel="noopener"
+            class="footer-social-link" data-social="youtube">
+            <img src="/assets/social/youtube.svg" alt="YouTube" class="footer-social-svg" loading="lazy" decoding="async">
+            <span>YouTube</span>
+          </a>
+          <a href="https://github.com/GeoStratum" target="_blank" rel="noopener"
+            class="footer-social-link" data-social="github">
+            <img src="/assets/social/github.svg" alt="GitHub" class="footer-social-svg" loading="lazy" decoding="async">
+            <span>GitHub</span>
+          </a>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p data-i18n="home.footer.copy">© 2026 GeoStratum All rights reserved.</p>
+        <p class="footer-hosting" data-i18n="footer.hosting">Hosted by OVH SAS</p>
+        <p class="footer-hosting" data-i18n="footer.hosting.address">2 Rue Kellermann – 59100 Roubaix – France</p>
+        <p class="footer-ip-notice" data-i18n="footer.ip.notice">GeoStratum and Lithotheque names, logos, visuals and
+          contents are protected by intellectual property law. Any unauthorized use or reproduction is prohibited.</p>
+        <nav class="footer-links-row flex-gap-1">
+          <a href="https://www.geostratum.eu/legal" data-i18n="home.footer.legal">Legal Notice</a>
+        </nav>
+      </div>
+    </footer>
+  </div>
+</body>
+
+</html>
