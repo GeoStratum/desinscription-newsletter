@@ -98,3 +98,36 @@
     align-items: stretch;
   }
 }
+
+/* Dark theme specific overrides */
+:root.theme-dark .unsub-panel {
+  background: rgba(11, 20, 29, 0.95);
+  border-color: rgba(74, 114, 136, 0.55);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+}
+
+:root.theme-dark .unsub-card h1 {
+  color: #e1edf5;
+}
+
+:root.theme-dark .unsub-card .lead {
+  color: #98aebd;
+}
+
+:root.theme-dark .unsub-input {
+  background: rgba(8, 16, 24, 0.95) !important;
+  border-color: rgba(74, 114, 136, 0.55) !important;
+  color: #e1edf5 !important;
+}
+
+:root.theme-dark .unsub-input:focus {
+  border-color: var(--brand-teal) !important;
+}
+
+:root.theme-dark .unsub-legal-note {
+  color: #98aebd;
+}
+
+:root.theme-dark .unsub-footer-links {
+  border-top-color: rgba(74, 114, 136, 0.4);
+}
