@@ -1,3 +1,83 @@
+/* --- TEST ENVIRONMENT GATEKEEPER (identique au site principal) --- */
+(function checkTestAccess() {
+  // Hôtes protégés : tout sous-domaine "test." (ex. test-desinscription.geostratum.eu)
+  const host = window.location.hostname;
+  const isTestSite = host.startsWith('test.') || host.startsWith('test-');
+  if (!isTestSite) return;
+
+  const TEST_AUTH_KEY = 'geostratum_test_authorized';
+  const EXPECTED_USER = 'dev@geostratum.eu';
+  // Hash SHA-256 du mot de passe de test (même que le site principal)
+  const EXPECTED_HASH = '47ed4b6b0caeef16644a9c0932976c17161b73e060b6439c9282c741ce739312';
+
+  if (sessionStorage.getItem(TEST_AUTH_KEY) === 'true') return;
+
+  const styleBlock = document.createElement('style');
+  styleBlock.id = 'test-lock-style';
+  styleBlock.innerHTML = 'html, body { overflow: hidden !important; } #test-lock-overlay { position: fixed; inset: 0; z-index: 9999999; background: #0c1017; display: flex; align-items: center; justify-content: center; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; color: #f0f6fc; padding: 20px; }';
+  document.head.appendChild(styleBlock);
+
+  async function sha256(str) {
+    const buffer = new TextEncoder().encode(str);
+    const hash = await crypto.subtle.digest('SHA-256', buffer);
+    return Array.from(new Uint8Array(hash)).map(b => b.toString(16).padStart(2, '0')).join('');
+  }
+
+  function showLockModal() {
+    if (document.getElementById('test-lock-overlay')) return;
+    const overlay = document.createElement('div');
+    overlay.id = 'test-lock-overlay';
+    overlay.innerHTML = `
+      <div style="max-width: 400px; width: 100%; background: #161b22; border: 1px solid #30363d; border-radius: 12px; padding: 28px; box-shadow: 0 16px 36px rgba(0,0,0,0.6); text-align: center;">
+        <div style="font-size: 38px; margin-bottom: 12px;">🔒</div>
+        <h2 style="margin: 0 0 8px 0; font-size: 1.3rem; font-weight: 600; color: #fff;">Environnement de Test</h2>
+        <p style="margin: 0 0 20px 0; font-size: 0.9rem; color: #8b949e; line-height: 1.4;">L'accès à cet environnement de test est strictement réservé. Veuillez vous identifier.</p>
+        <form id="test-lock-form" style="display: flex; flex-direction: column; gap: 12px;">
+          <input type="text" id="test-user-input" placeholder="Identifiant (e-mail)" required autocomplete="username"
+            style="width: 100%; box-sizing: border-box; padding: 12px 14px; border-radius: 8px; border: 1px solid #30363d; background: #0d1117; color: #fff; font-size: 1rem; outline: none; transition: border-color 0.2s;" />
+          <input type="password" id="test-password-input" placeholder="Mot de passe" required autocomplete="current-password"
+            style="width: 100%; box-sizing: border-box; padding: 12px 14px; border-radius: 8px; border: 1px solid #30363d; background: #0d1117; color: #fff; font-size: 1rem; outline: none; transition: border-color 0.2s;" />
+          <div id="test-lock-error" style="display: none; color: #f85149; font-size: 0.85rem; text-align: left;">Identifiant ou mot de passe incorrect.</div>
+          <button type="submit" id="test-lock-submit"
+            style="padding: 12px; border: none; border-radius: 8px; background: #238636; color: #fff; font-weight: 600; font-size: 0.95rem; cursor: pointer; transition: background 0.2s;">
+            Déverrouiller l'accès
+          </button>
+        </form>
+      </div>
+    `;
+    document.body.appendChild(overlay);
+
+    const form = document.getElementById('test-lock-form');
+    const userInput = document.getElementById('test-user-input');
+    const passInput = document.getElementById('test-password-input');
+    const error = document.getElementById('test-lock-error');
+    userInput.focus();
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      error.style.display = 'none';
+      const user = userInput.value.trim();
+      const pass = passInput.value;
+      const hashed = await sha256(pass);
+      if (user.toLowerCase() === EXPECTED_USER.toLowerCase() && hashed === EXPECTED_HASH) {
+        sessionStorage.setItem(TEST_AUTH_KEY, 'true');
+        overlay.remove();
+        styleBlock.remove();
+      } else {
+        error.style.display = 'block';
+        passInput.value = '';
+        passInput.focus();
+      }
+    });
+  }
+
+  if (document.body) {
+    showLockModal();
+  } else {
+    window.addEventListener('DOMContentLoaded', showLockModal);
+  }
+})();
+
 /* --- NEWSLETTER UNPERSISTENT / LIGHTWEIGHT JS --- */
 const SITE_LANG_KEY = 'geostratum_site_lang';
 const SITE_THEME_KEY = 'geostratum_site_theme';
