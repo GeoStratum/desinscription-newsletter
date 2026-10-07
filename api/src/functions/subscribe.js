@@ -16,6 +16,22 @@ app.http('subscribe', {
             const consent = Boolean(body.consent);
             const lang = (body.lang || 'en').trim().toLowerCase().slice(0, 5);
             const source = (body.source || 'website_footer').trim();
+            const honeypot = (body.website || body.company || '').trim();
+
+            // 0. Détection stricte Anti-Spam / Bots (Telegram, URLs, mots-clés de spam)
+            const spamPattern = /(t\.me|telegram|whatsapp|bit\.ly|tinyurl|http:\/\/|https:\/\/|crypto|profit|casino|invest|dating)/i;
+            const fullPayloadString = `${email} ${source} ${lang} ${honeypot}`;
+
+            if (honeypot || spamPattern.test(fullPayloadString)) {
+                context.warn(`Spam bot attempt blocked: email="${email}", source="${source}", lang="${lang}"`);
+                return {
+                    status: 200,
+                    jsonBody: {
+                        success: true,
+                        message: 'Subscription registered.'
+                    }
+                };
+            }
 
             // 1. Validation email
             if (!email || !EMAIL_REGEX.test(email) || email.length > 254) {
