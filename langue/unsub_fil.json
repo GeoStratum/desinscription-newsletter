@@ -25,5 +25,12 @@
   "unsub.return": "Bumalik sa GeoStratum",
   "unsub.error.email": "Mangyaring ilagay ang isang wastong email address.",
   "unsub.error.network": "Mayroong nangyaring error. Mangyaring subukan muli mamaya.",
-  "unsub.success": "Matagumpay kang tinanggal sa pag-subscribe sa newsletter."
+  "unsub.success": "Matagumpay kang tinanggal sa pag-subscribe sa newsletter.",
+  "resub.meta.title": "Subscription Renewal | GeoStratum",
+  "resub.meta.desc": "Renew your GeoStratum newsletter subscription in one click.",
+  "resub.title": "Subscription Renewal",
+  "resub.body": "Thank you for staying with us. Your 3-year GDPR consent has been successfully renewed.",
+  "resub.button": "Confirm Renewal",
+  "resub.note": "Your consent date has been updated per GDPR regulations.",
+  "resub.success": "Your subscription has been successfully renewed!"
 }

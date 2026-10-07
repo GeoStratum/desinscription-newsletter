@@ -251,11 +251,35 @@ function initUnsubscribeForm() {
   const statusEl = document.getElementById('unsub-status');
   const submitBtn = form.querySelector('.unsub-btn');
 
-  // Pre-fill email from query param (?email=user@example.com)
   const params = new URLSearchParams(window.location.search);
   const qEmail = params.get('email');
   if (qEmail && emailInput) {
     emailInput.value = qEmail;
+  }
+
+  // Détection du mode réinscription (par URL /resubscribe ou ?action=resubscribe)
+  const isResubscribe = window.location.pathname.includes('resubscribe') || params.get('action') === 'resubscribe';
+
+  if (isResubscribe) {
+    // Adapter les libellés de l'interface en mode réinscription
+    const titleEl = document.querySelector('[data-i18n="unsub.title"]');
+    const bodyEl = document.querySelector('[data-i18n="unsub.body"]');
+    const noteEl = document.querySelector('[data-i18n="unsub.note"]');
+    if (titleEl) titleEl.setAttribute('data-i18n', 'resub.title');
+    if (bodyEl) bodyEl.setAttribute('data-i18n', 'resub.body');
+    if (noteEl) noteEl.setAttribute('data-i18n', 'resub.note');
+    if (submitBtn) {
+      submitBtn.setAttribute('data-i18n', 'resub.button');
+      submitBtn.textContent = (window.siteTranslations && window.siteTranslations['resub.button']) || 'Confirm Renewal';
+    }
+    applyTranslations();
+
+    // Si l'e-mail est déjà présent dans l'URL, soumission automatique en 1 clic
+    if (qEmail) {
+      setTimeout(() => {
+        form.dispatchEvent(new Event('submit'));
+      }, 300);
+    }
   }
 
   form.addEventListener('submit', async (e) => {
@@ -274,24 +298,29 @@ function initUnsubscribeForm() {
     statusEl.className = 'footer-newsletter-status unsub-status';
     statusEl.textContent = '...';
 
+    const endpoint = isResubscribe ? '/api/subscribe' : '/api/unsubscribe';
+    const payload = isResubscribe
+      ? { email: email, consent: true, source: 'gdpr_3year_renewal', lang: window.currentLanguage || 'fr' }
+      : { email: email, source: 'unsubscribe_page' };
+
     try {
-      const res = await fetch('/api/unsubscribe', {
+      const res = await fetch(endpoint, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          email: email,
-          source: 'unsubscribe_page'
-        })
+        body: JSON.stringify(payload)
       });
 
       const data = await res.json().catch(() => ({}));
 
       if (res.ok && data.success) {
         statusEl.className = 'footer-newsletter-status is-success unsub-status';
-        statusEl.textContent = (window.siteTranslations && window.siteTranslations['unsub.success']) || 'You have been successfully unsubscribed.';
-        form.reset();
+        const successMsg = isResubscribe
+          ? ((window.siteTranslations && window.siteTranslations['resub.success']) || 'Your subscription has been successfully renewed!')
+          : ((window.siteTranslations && window.siteTranslations['unsub.success']) || 'You have been successfully unsubscribed.');
+        statusEl.textContent = successMsg;
+        if (!isResubscribe) form.reset();
       } else {
-        throw new Error(data.message || 'Unsubscribe failed');
+        throw new Error(data.message || 'Action failed');
       }
     } catch (err) {
       statusEl.className = 'footer-newsletter-status is-error unsub-status';

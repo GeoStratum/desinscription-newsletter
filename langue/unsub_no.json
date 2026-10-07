@@ -25,5 +25,12 @@
   "unsub.return": "Gå tilbake til GeoStratum",
   "unsub.error.email": "Vennligst skriv inn en gyldig e-postadresse.",
   "unsub.error.network": "Det oppstod en feil. Vennligst prøv igjen senere.",
-  "unsub.success": "Du er nå meldt av fra nyhetsbrevet."
+  "unsub.success": "Du er nå meldt av fra nyhetsbrevet.",
+  "resub.meta.title": "Subscription Renewal | GeoStratum",
+  "resub.meta.desc": "Renew your GeoStratum newsletter subscription in one click.",
+  "resub.title": "Subscription Renewal",
+  "resub.body": "Thank you for staying with us. Your 3-year GDPR consent has been successfully renewed.",
+  "resub.button": "Confirm Renewal",
+  "resub.note": "Your consent date has been updated per GDPR regulations.",
+  "resub.success": "Your subscription has been successfully renewed!"
 }

@@ -25,5 +25,12 @@
   "unsub.return": "Quay lại GeoStratum",
   "unsub.error.email": "Vui lòng nhập một địa chỉ email hợp lệ.",
   "unsub.error.network": "Đã xảy ra lỗi. Vui lòng thử lại sau.",
-  "unsub.success": "Bạn đã hủy đăng ký thành công khỏi bản tin."
+  "unsub.success": "Bạn đã hủy đăng ký thành công khỏi bản tin.",
+  "resub.meta.title": "Subscription Renewal | GeoStratum",
+  "resub.meta.desc": "Renew your GeoStratum newsletter subscription in one click.",
+  "resub.title": "Subscription Renewal",
+  "resub.body": "Thank you for staying with us. Your 3-year GDPR consent has been successfully renewed.",
+  "resub.button": "Confirm Renewal",
+  "resub.note": "Your consent date has been updated per GDPR regulations.",
+  "resub.success": "Your subscription has been successfully renewed!"
 }

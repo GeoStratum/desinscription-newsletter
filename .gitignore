@@ -29,3 +29,6 @@ Desktop.ini
 *.tmp
 *.temp
 scratch/
+
+# Documentation interne locale (ne pas pousser sur les dépôts ni Azure)
+README.md

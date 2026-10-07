@@ -25,5 +25,12 @@
   "unsub.return": "GeoStratum으로 돌아가기",
   "unsub.error.email": "유효한 이메일 주소를 입력해주세요.",
   "unsub.error.network": "오류가 발생했습니다. 나중에 다시 시도해주세요.",
-  "unsub.success": "뉴스레터 구독이 성공적으로 취소되었습니다."
+  "unsub.success": "뉴스레터 구독이 성공적으로 취소되었습니다.",
+  "resub.meta.title": "Subscription Renewal | GeoStratum",
+  "resub.meta.desc": "Renew your GeoStratum newsletter subscription in one click.",
+  "resub.title": "Subscription Renewal",
+  "resub.body": "Thank you for staying with us. Your 3-year GDPR consent has been successfully renewed.",
+  "resub.button": "Confirm Renewal",
+  "resub.note": "Your consent date has been updated per GDPR regulations.",
+  "resub.success": "Your subscription has been successfully renewed!"
 }

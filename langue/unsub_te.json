@@ -25,5 +25,12 @@
   "unsub.return": "GeoStratumకు తిరిగి వెళ్లండి",
   "unsub.error.email": "దయచేసి చెల్లుబాటు అయ్యే ఇమెయిల్ చిరునామాను నమోదు చేయండి.",
   "unsub.error.network": "ఒక లోపం సంభవించింది. దయచేసి తర్వాత మళ్లీ ప్రయత్నించండి.",
-  "unsub.success": "మీరు విజయవంతంగా న్యూస్‌లెటర్‌ నుండి నిష్క్రమించారు."
+  "unsub.success": "మీరు విజయవంతంగా న్యూస్‌లెటర్‌ నుండి నిష్క్రమించారు.",
+  "resub.meta.title": "Subscription Renewal | GeoStratum",
+  "resub.meta.desc": "Renew your GeoStratum newsletter subscription in one click.",
+  "resub.title": "Subscription Renewal",
+  "resub.body": "Thank you for staying with us. Your 3-year GDPR consent has been successfully renewed.",
+  "resub.button": "Confirm Renewal",
+  "resub.note": "Your consent date has been updated per GDPR regulations.",
+  "resub.success": "Your subscription has been successfully renewed!"
 }

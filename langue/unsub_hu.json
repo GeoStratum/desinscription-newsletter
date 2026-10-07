@@ -25,5 +25,12 @@
   "unsub.return": "Vissza a GeoStratum oldalra",
   "unsub.error.email": "Kérjük, adja meg egy érvényes e-mail címet.",
   "unsub.error.network": "Hiba történt. Kérjük, próbálkozzon újra később.",
-  "unsub.success": "Sikeresen leiratkozott a hírlevélről."
+  "unsub.success": "Sikeresen leiratkozott a hírlevélről.",
+  "resub.meta.title": "Subscription Renewal | GeoStratum",
+  "resub.meta.desc": "Renew your GeoStratum newsletter subscription in one click.",
+  "resub.title": "Subscription Renewal",
+  "resub.body": "Thank you for staying with us. Your 3-year GDPR consent has been successfully renewed.",
+  "resub.button": "Confirm Renewal",
+  "resub.note": "Your consent date has been updated per GDPR regulations.",
+  "resub.success": "Your subscription has been successfully renewed!"
 }

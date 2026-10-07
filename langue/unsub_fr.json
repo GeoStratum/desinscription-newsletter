@@ -25,5 +25,12 @@
   "footer.hosting": "Hébergé par OVH SAS",
   "footer.hosting.address": "2 Rue Kellermann – 59100 Roubaix – France",
   "footer.ip.notice": "Les noms, logos, visuels et contenus de GeoStratum sont protégés par le droit de la propriété intellectuelle. Toute utilisation ou reproduction non autorisée est interdite.",
-  "home.footer.legal": "Mentions légales"
+  "home.footer.legal": "Mentions légales",
+  "resub.meta.title": "Renouvellement d inscription | GeoStratum",
+  "resub.meta.desc": "Renouvelez votre inscription à la newsletter GeoStratum en un clic.",
+  "resub.title": "Renouvellement de votre inscription",
+  "resub.body": "Merci de votre fidélité. Votre consentement de 3 ans a été renouvelé avec succès pour continuer à recevoir nos actualités.",
+  "resub.button": "Confirmer la réinscription",
+  "resub.note": "Votre date de consentement a été mise à jour conformément à la réglementation RGPD.",
+  "resub.success": "Votre réinscription a été confirmée avec succès !"
 }
