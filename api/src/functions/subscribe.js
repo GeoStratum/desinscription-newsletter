@@ -73,7 +73,7 @@ app.http('subscribe', {
             }
 
             // 2. Relais Webhook Discord pour notification de suivi
-            const webhookUrl = process.env.NEWSLETTER_DISCORD_WEBHOOK || 'https://discord.com/api/webhooks/1557269394038726696/WGoPLHezZjQpOT6IJL31PAN2pQ3hCG2RZoVlktiqtZlegkqx9tnzt1AtmC4K5fxcs9Ae';
+            const webhookUrl = process.env.NEWSLETTER_DISCORD_WEBHOOK;
             if (webhookUrl) {
                 const isRenewal = source.includes('renewal') || source.includes('resubscribe');
                 try {
