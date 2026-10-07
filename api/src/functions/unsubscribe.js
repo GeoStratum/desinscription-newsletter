@@ -30,7 +30,29 @@ app.http('unsubscribe', {
 
             context.log(`Unsubscribe processed: ${email} (source: ${source}, ip: ${clientIp}, time: ${timestamp})`);
 
-            // Relais Webhook Discord (ou n8n) pour la notification instantanée de désinscription et mise à jour de la base
+            // 1. Relais n8n pour mise à jour automatique des CSV sur Forgejo (subscribers.csv & consent_proofs.csv)
+            const n8nWebhookUrl = process.env.NEWSLETTER_N8N_WEBHOOK || 'https://n8n.geostratum.eu/webhook/newsletter-sync';
+            if (n8nWebhookUrl) {
+                try {
+                    await fetch(n8nWebhookUrl, {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({
+                            action: 'UNSUBSCRIBE',
+                            email,
+                            source,
+                            consent: false,
+                            consentText: '1-click GDPR opposition',
+                            clientIp,
+                            timestamp
+                        })
+                    });
+                } catch (n8nErr) {
+                    context.error('Failed to notify n8n unsubscribe webhook:', n8nErr);
+                }
+            }
+
+            // 2. Relais Webhook Discord pour notification de secours instantanée
             const webhookUrl = process.env.NEWSLETTER_DISCORD_WEBHOOK || 'https://discord.com/api/webhooks/1557269394038726696/WGoPLHezZjQpOT6IJL31PAN2pQ3hCG2RZoVlktiqtZlegkqx9tnzt1AtmC4K5fxcs9Ae';
             if (webhookUrl) {
                 try {
