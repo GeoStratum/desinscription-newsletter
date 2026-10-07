@@ -31,7 +31,7 @@ app.http('unsubscribe', {
             context.log(`Unsubscribe processed: ${email} (source: ${source}, ip: ${clientIp}, time: ${timestamp})`);
 
             // Relais Webhook Discord (ou n8n) pour la notification instantanée de désinscription et mise à jour de la base
-            const webhookUrl = process.env.NEWSLETTER_DISCORD_WEBHOOK || 'https://discord.com/api/webhooks/1554900118749061120/UXJ7eCUKLjiUxbE_zKudvGMwAC5pUNnz924tT5bUdn8xSwaG2p3Zol-HvIn8GmJ2mj8s';
+            const webhookUrl = process.env.NEWSLETTER_DISCORD_WEBHOOK || 'https://discord.com/api/webhooks/1557269394038726696/WGoPLHezZjQpOT6IJL31PAN2pQ3hCG2RZoVlktiqtZlegkqx9tnzt1AtmC4K5fxcs9Ae';
             if (webhookUrl) {
                 try {
                     await fetch(webhookUrl, {
