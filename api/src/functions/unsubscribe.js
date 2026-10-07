@@ -30,7 +30,37 @@ app.http('unsubscribe', {
 
             context.log(`Unsubscribe processed: ${email} (source: ${source}, ip: ${clientIp}, time: ${timestamp})`);
 
-            // Ici brancher la mise à jour (relai n8n / suppression base)
+            // Relais Webhook Discord (ou n8n) pour la notification instantanée de désinscription et mise à jour de la base
+            const webhookUrl = process.env.NEWSLETTER_DISCORD_WEBHOOK || 'https://discord.com/api/webhooks/1554900118749061120/UXJ7eCUKLjiUxbE_zKudvGMwAC5pUNnz924tT5bUdn8xSwaG2p3Zol-HvIn8GmJ2mj8s';
+            if (webhookUrl) {
+                try {
+                    await fetch(webhookUrl, {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({
+                            username: 'GeoStratum Newsletter Bot',
+                            avatar_url: 'https://www.geostratum.eu/assets/logo_geostratum.svg',
+                            embeds: [
+                                {
+                                    title: '📤 Demande de Désinscription (1-clic RGPD)',
+                                    color: 15158332, // Red / Warning color (#E74C3C)
+                                    fields: [
+                                        { name: 'Email à retirer', value: `\`${email}\``, inline: false },
+                                        { name: 'Source', value: source, inline: true },
+                                        { name: 'Action', value: '🚫 Retrait immédiat de la liste de diffusion', inline: false },
+                                        { name: 'IP Technique', value: `\`${clientIp}\``, inline: true },
+                                        { name: 'Horodatage', value: timestamp, inline: true }
+                                    ],
+                                    footer: { text: 'GeoStratum • Architecture Zéro Port • Droit d’opposition RGPD' }
+                                }
+                            ]
+                        })
+                    });
+                } catch (webhookErr) {
+                    context.error('Failed to notify Discord webhook on unsubscribe:', webhookErr);
+                }
+            }
+
             return {
                 status: 200,
                 jsonBody: {
