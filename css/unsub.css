@@ -131,3 +131,23 @@
 :root.theme-dark .unsub-footer-links {
   border-top-color: rgba(74, 114, 136, 0.4);
 }
+
+/* Accessibility: visually hidden utility for screen readers */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* Offscreen Rendering Optimization */
+.site-footer {
+  content-visibility: auto;
+  contain-intrinsic-size: 0 450px;
+}
+
