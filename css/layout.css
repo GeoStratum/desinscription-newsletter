@@ -315,7 +315,12 @@ main {
 .footer-newsletter-input:focus {
   outline: none;
   border-color: var(--brand-teal);
-  box-shadow: 0 0 0 3px rgba(15, 137, 148, 0.15);
+  box-shadow: 0 0 0 3px rgba(15, 137, 148, 0.25);
+}
+
+.footer-newsletter-input:focus-visible {
+  outline: 2px solid var(--brand-teal);
+  outline-offset: 2px;
 }
 
 .footer-newsletter-btn {
@@ -366,11 +371,21 @@ main {
 }
 
 .footer-newsletter-status.is-success {
-  color: #10b981;
+  color: #047857;
+  font-weight: 600;
 }
 
 .footer-newsletter-status.is-error {
-  color: #ef4444;
+  color: #b91c1c;
+  font-weight: 600;
+}
+
+:root.theme-dark .footer-newsletter-status.is-success {
+  color: #34d399;
+}
+
+:root.theme-dark .footer-newsletter-status.is-error {
+  color: #f87171;
 }
 
 /* Footer Community & Social Section */
